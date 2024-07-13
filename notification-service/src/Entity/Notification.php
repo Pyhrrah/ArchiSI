@@ -1,7 +1,5 @@
 <?php
 
-// src/Entity/Notification.php
-
 namespace App\Entity;
 
 use App\Repository\NotificationRepository;
@@ -59,7 +57,6 @@ class Notification
     public function setType(string $type): self
     {
         $this->type = $type;
-
         return $this;
     }
 
@@ -71,7 +68,6 @@ class Notification
     public function setEmailRecipient(string $emailRecipient): self
     {
         $this->emailRecipient = $emailRecipient;
-
         return $this;
     }
 
@@ -83,7 +79,6 @@ class Notification
     public function setSubject(string $subject): self
     {
         $this->subject = $subject;
-
         return $this;
     }
 
@@ -95,7 +90,6 @@ class Notification
     public function setMessage(string $message): self
     {
         $this->message = $message;
-
         return $this;
     }
 
@@ -107,7 +101,6 @@ class Notification
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
 }

@@ -3,82 +3,40 @@
 namespace App\Entity;
 
 use App\Repository\NotificationRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=NotificationRepository::class)
- */
+#[ORM\Entity(repositoryClass: NotificationRepository::class)]
 class Notification
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $type;
+    #[ORM\Column(length: 255)]
+    private ?string $email_recipient = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $emailRecipient;
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $message = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $subject;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $message;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createdAt;
-
-    // Getters and setters
+    #[ORM\Column(length: 255)]
+    private ?string $sujet = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-        return $this;
-    }
-
     public function getEmailRecipient(): ?string
     {
-        return $this->emailRecipient;
+        return $this->email_recipient;
     }
 
-    public function setEmailRecipient(string $emailRecipient): self
+    public function setEmailRecipient(string $email_recipient): static
     {
-        $this->emailRecipient = $emailRecipient;
-        return $this;
-    }
+        $this->email_recipient = $email_recipient;
 
-    public function getSubject(): ?string
-    {
-        return $this->subject;
-    }
-
-    public function setSubject(string $subject): self
-    {
-        $this->subject = $subject;
         return $this;
     }
 
@@ -87,20 +45,22 @@ class Notification
         return $this->message;
     }
 
-    public function setMessage(string $message): self
+    public function setMessage(string $message): static
     {
         $this->message = $message;
+
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getSujet(): ?string
     {
-        return $this->createdAt;
+        return $this->sujet;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    public function setSujet(string $sujet): static
     {
-        $this->createdAt = $createdAt;
+        $this->sujet = $sujet;
+
         return $this;
     }
 }
